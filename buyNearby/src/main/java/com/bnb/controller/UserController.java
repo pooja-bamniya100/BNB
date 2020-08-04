@@ -22,10 +22,8 @@ public class UserController {
 	/**
 	 * create user  
 	 *
-	 * @param id the employee id
-	 * @return the message
-	 * @throws ResourceNotFoundException 
-	 * @throws ExceptResourceNotFoundExceptionion the exception
+	 * @param user the User's object
+	 * @return the responceEntity
 	 */
 	@PostMapping("/users")
 	public ResponseEntity  createUser(@RequestBody Users user)

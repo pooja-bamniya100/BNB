@@ -1,0 +1,24 @@
+package com.bnb.serivceImpl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.bnb.model.Users;
+import com.bnb.repository.UserRepository;
+import com.bnb.service.UserService;
+
+@Service
+public class UserServiceImpl implements UserService{
+
+	@Autowired
+	UserRepository userRepository;
+	
+	@Override
+	public long createUser(Users user) {
+		user=userRepository.findByPhoneNumber(user.getPhoneNumber() );
+		System.out.println(user.getId());
+		//user=userRepository.save(user);
+		return user.getId();
+	}
+
+}

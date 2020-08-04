@@ -18,7 +18,7 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "admin_users", schema = "public", uniqueConstraints = { @UniqueConstraint(columnNames = "email"),
 		@UniqueConstraint(columnNames = "emp_id"), @UniqueConstraint(columnNames = "phone_number"),
 		@UniqueConstraint(columnNames = "reset_password_token") })
-public class AdminUsers implements java.io.Serializable {
+public class AdminUsers  {
 
 	private long id;
 	private String name;

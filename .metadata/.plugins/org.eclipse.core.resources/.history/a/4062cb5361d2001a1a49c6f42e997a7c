@@ -1,0 +1,14 @@
+package com.bnb.serivceImpl;
+
+import com.bnb.model.Users;
+import com.bnb.service.UserService;
+
+public class UserServiceImpl implements UserService{
+
+	@Override
+	public int createUser(Users user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

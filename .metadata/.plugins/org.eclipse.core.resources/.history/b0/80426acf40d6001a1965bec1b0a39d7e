@@ -1,0 +1,50 @@
+package com.bnb.serivceImpl;
+
+import java.util.Date;
+import java.util.function.Supplier;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.bnb.model.Users;
+import com.bnb.repository.UserRepository;
+import com.bnb.service.UserService;
+
+@Service
+public class UserServiceImpl implements UserService{
+
+	@Autowired
+	UserRepository userRepository;
+	
+	@Override
+	public long createUser(Users user) {
+		Users tempUser;
+		String referralCode;
+		tempUser=userRepository.findByPhoneNumber(user.getPhoneNumber());
+		if(tempUser==null) {
+			
+			Supplier<String> s=()->{ 
+				String symbols="ABCDEFGHIJKLMNOPQRSTUVWXYZ#$@"; 
+				Supplier<Integer> d=()->(int)(Math.random()*10); 
+				Supplier<Character> c=()->symbols.charAt((int)(Math.random()*29));  
+				String pwd=""; 
+				for(int i =1;i<=6;i++){
+				if(i%2==0)   {
+					pwd=pwd+d.get(); 
+					}  else  { 
+						pwd=pwd+c.get(); 
+						}  
+					}  
+				return pwd; 
+				};
+				referralCode=s.get();
+		     	if(userRepository.findByReferralCode(referralCode)!=null) 
+		     	referralCode=referralCode.toLowerCase();
+				user.setReferralCode(referralCode);
+				
+			tempUser=userRepository.save(user);
+		}
+		return tempUser.getId();
+	}
+
+}

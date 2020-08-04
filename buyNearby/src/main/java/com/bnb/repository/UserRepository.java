@@ -17,6 +17,10 @@ public interface UserRepository extends JpaRepository<Users,Long>{
 
 public Users findByPhoneNumber(String phoneNumber);
 
+public Users findByReferralCode(String referralCode);
+
+public boolean existsByReferralCode(String referralCode);
+
 }
 		
 

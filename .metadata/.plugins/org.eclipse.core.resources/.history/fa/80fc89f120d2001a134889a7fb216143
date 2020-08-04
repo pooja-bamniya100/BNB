@@ -1,0 +1,11 @@
+package com.bnb.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public class UserRepository implements JpaRepository<T, ID> {
+
+	public UserRepository() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

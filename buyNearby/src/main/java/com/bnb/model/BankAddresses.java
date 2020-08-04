@@ -47,8 +47,7 @@ public class BankAddresses implements java.io.Serializable {
 	}
 
 	@Id
-
-	@Column(name = "id", unique = true, nullable = false)
+    @Column(name = "id", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
 	}

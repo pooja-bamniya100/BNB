@@ -4,6 +4,8 @@ package com.bnb.model;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -14,7 +16,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "admin_notifications", schema = "public")
-public class AdminNotifications implements java.io.Serializable {
+public class AdminNotifications implements java.io.Serializable  {
 
 	private long id;
 	private Long userId;
@@ -47,7 +49,7 @@ public class AdminNotifications implements java.io.Serializable {
 	}
 
 	@Id
-
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "id", unique = true, nullable = false)
 	public long getId() {
 		return this.id;

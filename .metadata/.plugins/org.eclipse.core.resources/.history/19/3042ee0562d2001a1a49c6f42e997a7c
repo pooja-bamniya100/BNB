@@ -1,0 +1,13 @@
+package com.bnb.service;
+
+import org.springframework.stereotype.Service;
+import org.springframework.util.MultiValueMap;
+
+import com.bnb.model.Users;
+
+@Service
+public interface UserService {
+
+	public int createUser(Users user);
+
+}

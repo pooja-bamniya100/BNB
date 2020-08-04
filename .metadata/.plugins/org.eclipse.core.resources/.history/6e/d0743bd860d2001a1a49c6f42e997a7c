@@ -1,0 +1,14 @@
+package com.bnb.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.bnb.model.Users;
+
+@Repository
+public class UserRepository extends JpaRepository<Users,long>{
+
+	public int createUser(Users user);
+		
+
+}

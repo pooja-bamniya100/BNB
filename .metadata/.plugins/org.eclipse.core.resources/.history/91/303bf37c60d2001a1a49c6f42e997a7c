@@ -1,0 +1,8 @@
+package com.bnb.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public interface UserService {
+
+}

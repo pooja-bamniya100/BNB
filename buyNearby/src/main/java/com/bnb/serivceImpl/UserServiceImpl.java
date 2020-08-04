@@ -1,5 +1,8 @@
 package com.bnb.serivceImpl;
 
+import java.util.Date;
+import java.util.function.Supplier;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,13 +15,48 @@ public class UserServiceImpl implements UserService{
 
 	@Autowired
 	UserRepository userRepository;
-	
+
 	@Override
 	public long createUser(Users user) {
 		Users tempUser;
+		String referralCode;
 		tempUser=userRepository.findByPhoneNumber(user.getPhoneNumber());
 		if(tempUser==null) {
-			user.setPhoneNumber(null);
+
+			Supplier<String> s=()->{ 
+				String symbols="abcdefghijklmnopqrstuvwxyz"; 
+				Supplier<Integer> d=()->(int)(Math.random()*10); 
+				Supplier<Character> c=()->symbols.charAt((int)(Math.random()*26));  
+				String referral=""; 
+				for(int i =1;i<=6;i++){
+					if(i%2==0)   {
+						referral=referral+d.get(); 
+					}  else  { 
+						referral=referral+c.get(); 
+					}  
+				}  
+				return referral; 
+			};
+			referralCode=s.get();
+
+			if(userRepository.existsByReferralCode(referralCode))
+				referralCode=referralCode.toUpperCase();
+
+			if(userRepository.existsByReferralCode(referralCode)) {
+				String authId=user.getAuthId();
+				int authIdLength=authId.length();
+
+				referralCode=referralCode.replace(referralCode.charAt(5),authId.charAt(authIdLength-1));
+				System.out.println(referralCode);
+				if(authIdLength>=2)
+					referralCode=referralCode.replace(referralCode.charAt(3),authId.charAt(authIdLength-2));
+				else
+					referralCode=referralCode.replace(referralCode.charAt(3),'0');
+
+			}
+
+			user.setReferralCode(referralCode);
+
 			tempUser=userRepository.save(user);
 		}
 		return tempUser.getId();

@@ -1,0 +1,43 @@
+package com.bnb.model;
+
+import java.sql.Date;
+
+import javax.validation.constraints.Size;
+
+import com.sun.istack.NotNull;
+
+import net.bytebuddy.implementation.auxiliary.AuxiliaryType.SignatureRelevant;
+
+public class Users {
+  private long id;
+  private String name;
+  @NotNull
+  @Size(min=10 ,max=10)
+  private String phone_number;//size=10
+  private String password_digest;
+  private double wallet_balance;
+  private double avg_rating;
+  private String auth_id;
+  private String profile_image;
+  private String email;
+  private String pnb_user_id;
+  private int gender;
+  private int[] favourite_shops;
+  @Size(min=6 ,max=6)
+  private String pincode;//size=6
+  private String latitude;
+  private String longitude;
+  private boolean terms_conditions;
+  private boolean whatsapp_subscription;
+  private boolean registered;
+  private String referral_code;
+  private String referral_link;
+  private Date date_of_birth;
+  private boolean referral_code_used;
+	public Users() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
+
+//avg_rating double precision,

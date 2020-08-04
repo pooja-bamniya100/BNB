@@ -1,0 +1,5 @@
+package com.bnb.service;
+
+public interface UserService {
+
+}

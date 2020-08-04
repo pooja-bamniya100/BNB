@@ -1,0 +1,9 @@
+package com.bnb.model;
+
+public class AuditModel {
+
+	public AuditModel() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
